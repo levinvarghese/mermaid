@@ -1,0 +1,49 @@
+@startuml
+
+!define PROCESS circle
+!define EXTERNAL_ENTITY square
+!define DATA_STORE database
+!define DATA_FLOW arrow
+
+' Level 0 DFD
+PROCESS (Data Collection and Analysis) {
+  EXTERNAL_ENTITY (Bedridden Patients)
+  EXTERNAL_ENTITY (System Users)
+
+  DATA_FLOW --> (Data Collection and Analysis)
+  DATA_FLOW --> (Emotion Recognition)
+  DATA_FLOW --> (Music and Lighting Control)
+
+  DATA_STORE (Patient Data)
+}
+
+' Level 1 DFD for Data Collection and Analysis
+PROCESS (Data Collection and Analysis) {
+  EXTERNAL_ENTITY (Bedridden Patients)
+  EXTERNAL_ENTITY (System Users)
+
+  PROCESS (Voice Analysis) {
+    DATA_FLOW --> (Voice Analysis)
+  }
+
+  PROCESS (Text Analysis) {
+    DATA_FLOW --> (Text Analysis)
+  }
+
+  PROCESS (Facial Analysis) {
+    DATA_FLOW --> (Facial Analysis)
+  }
+
+  PROCESS (Data Fusion) {
+    DATA_FLOW --> (Data Fusion)
+  }
+
+  DATA_STORE (Patient Voice Data)
+  DATA_STORE (Patient Text Data)
+  DATA_STORE (Facial Image Data)
+  DATA_STORE (Processed Emotional Data)
+
+  DATA_FLOW --> (Processed Emotional Data)
+}
+
+@enduml
